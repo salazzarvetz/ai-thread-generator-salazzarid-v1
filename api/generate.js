@@ -3,7 +3,8 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { topic, targetAudience, contentGoal, tone, affiliateLink } = req.body;
+  // Ambil threadCount dari body request (berikan default 5 jika kosong)
+  const { topic, targetAudience, contentGoal, tone, affiliateLink, threadCount = 5 } = req.body;
   const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
@@ -19,10 +20,10 @@ Buatlah sebuah thread/utas media sosial yang menarik, bernarasi, dan mudah dibac
 ${affiliateLink ? `- Link Afiliasi: ${affiliateLink} (Sematkan link ini secara alami di bagian akhir atau poin rekomendasi yang relevan)` : ''}
 
 Ketentuan Format:
-1. Bagi utas menjadi 4-7 tweet/post terpisah, beri nomor (misal: 1/ 2/ dst).
+1. Wajib membagi utas menjadi TEPAT ${threadCount} post/tweet terpisah, beri nomor secara berurutan (misal: 1/${threadCount}, 2/${threadCount}, dst).
 2. Gunakan kalimat pembuka (hook) yang memancing rasa penasaran di postingan 1.
 3. Gunakan bahasa yang natural dan sesuai dengan nada yang diminta.
-4. Sertakan Call to Action (CTA) di bagian akhir.`;
+4. Sertakan Call to Action (CTA) di bagian akhir pada postingan terakhir.`;
 
   try {
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`, {
