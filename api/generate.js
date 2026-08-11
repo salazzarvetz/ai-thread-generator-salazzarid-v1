@@ -18,11 +18,12 @@ Buatlah sebuah thread/utas media sosial yang menarik, bernarasi, dan mudah dibac
 - Nada/Emosi: ${tone}
 ${affiliateLink ? `- Link Afiliasi: ${affiliateLink} (Sematkan link ini secara alami di bagian akhir atau poin rekomendasi yang relevan)` : ''}
 
-Ketentuan Format:
-1. Wajib membagi utas menjadi TEPAT ${threadCount} post/tweet terpisah, beri nomor secara berurutan (misal: 1/${threadCount}, 2/${threadCount}, dst).
-2. Gunakan kalimat pembuka (hook) yang memancing rasa penasaran di postingan 1.
-3. Gunakan bahasa yang natural dan sesuai dengan nada yang diminta.
-4. Sertakan Call to Action (CTA) di bagian akhir pada postingan terakhir.`;
+Ketentuan Gaya Bahasa & Format:
+1. PENTING: Gunakan kata ganti diri "aku" untuk penulis dan "kalian" (atau "kamu") untuk pembaca. JANGAN PERNAH menggunakan kata "lo", "gue", "saya", atau "anda".
+2. Gaya bahasa santai, akrab, mengalir, dan seperti teman berbincang.
+3. Wajib membagi utas menjadi TEPAT ${threadCount} post/tweet terpisah, beri nomor secara berurutan (misal: 1/${threadCount}, 2/${threadCount}, dst).
+4. Gunakan kalimat pembuka (hook) yang memancing rasa penasaran di postingan 1.
+5. Sertakan Call to Action (CTA) di bagian akhir pada postingan terakhir.`;
 
   try {
     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`, {
