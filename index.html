@@ -59,6 +59,20 @@
               </select>
             </div>
             <div>
+  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+    Jumlah Utas / Tweet
+  </label>
+  <select id="threadCount"
+    class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition">
+    <option value="3">3 Utas</option>
+    <option value="4">4 Utas</option>
+    <option value="5" selected>5 Utas (Rekomendasi)</option>
+    <option value="6">6 Utas</option>
+    <option value="7">7 Utas</option>
+    <option value="8">8 Utas</option>
+  </select>
+</div>
+<div>
               <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Link Afiliasi (Opsional)</label>
               <input type="url" id="affiliateLink" placeholder="https://s.shopee.co.id/..."
                 class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition" />
@@ -104,6 +118,19 @@
       const outputArea = document.getElementById('outputArea');
       const generateBtn = document.getElementById('generateBtn');
       const copyBtn = document.getElementById('copyBtn');
+const threadCount = document.getElementById('threadCount').value;
+
+try {
+  const response = await fetch('/api/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ 
+      topic, 
+      targetAudience, 
+      contentGoal, 
+      tone, 
+      affiliateLink,
+      threadCount
 
       generateBtn.disabled = true;
       generateBtn.innerText = 'Menyusun Utas...';
