@@ -24,7 +24,7 @@
         <form id="threadForm" class="space-y-4">
           <div>
             <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-              Topik / Gagasan Utama *
+              TOPIK / GAGASAN UTAMA *
             </label>
             <textarea id="topic" rows="3" required
               placeholder="Contoh: 3 Rekomendasi komponen PC yang harganya masih stabil"
@@ -33,16 +33,16 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Target Pembaca</label>
-              <input type="text" id="targetAudience" placeholder="Gen Z, Pelajar, Pekerja, Semua Orang"
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">TARGET PEMBACA</label>
+              <input type="text" id="targetAudience" placeholder="Gen Z, Pelajar, Pekerja, Ser..."
                 class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition" />
             </div>
             <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Tujuan Konten</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">TUJUAN KONTEN</label>
               <select id="contentGoal"
                 class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition">
                 <option value="Edukasi & Soft Selling">Edukasi & Soft Selling</option>
-                <option value="Review Produk & Hard Selling">Review & Hard Selling</option>
+                <option value="Review Produk & Hard Selling">Review Produk & Hard Selling</option>
                 <option value="Storytelling & Engagement">Storytelling & Engagement</option>
               </select>
             </div>
@@ -50,7 +50,7 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Nada / Emosi</label>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">NADA / EMOSI</label>
               <select id="tone"
                 class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition">
                 <option value="Santai & Ramah">Santai & Ramah</option>
@@ -59,24 +59,23 @@
               </select>
             </div>
             <div>
-  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
-    Jumlah Utas / Tweet
-  </label>
-  <select id="threadCount"
-    class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition">
-    <option value="3">3 Utas</option>
-    <option value="4">4 Utas</option>
-    <option value="5" selected>5 Utas (Rekomendasi)</option>
-    <option value="6">6 Utas</option>
-    <option value="7">7 Utas</option>
-    <option value="8">8 Utas</option>
-  </select>
-</div>
-<div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">Link Afiliasi (Opsional)</label>
-              <input type="url" id="affiliateLink" placeholder="https://s.shopee.co.id/..."
-                class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition" />
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">JUMLAH UTAS / TWEET</label>
+              <select id="threadCount"
+                class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition">
+                <option value="3">3 Utas</option>
+                <option value="4">4 Utas</option>
+                <option value="5" selected>5 Utas (Rekomendasi)</option>
+                <option value="6">6 Utas</option>
+                <option value="7">7 Utas</option>
+                <option value="8">8 Utas</option>
+              </select>
             </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">LINK AFILIASI (OPSIONAL)</label>
+            <input type="url" id="affiliateLink" placeholder="https://s.shopee.co.id/..."
+              class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition" />
           </div>
 
           <button type="submit" id="generateBtn"
@@ -113,24 +112,12 @@
       const targetAudience = document.getElementById('targetAudience').value.trim() || 'Umum';
       const contentGoal = document.getElementById('contentGoal').value;
       const tone = document.getElementById('tone').value;
+      const threadCount = document.getElementById('threadCount').value;
       const affiliateLink = document.getElementById('affiliateLink').value.trim();
 
       const outputArea = document.getElementById('outputArea');
       const generateBtn = document.getElementById('generateBtn');
       const copyBtn = document.getElementById('copyBtn');
-const threadCount = document.getElementById('threadCount').value;
-
-try {
-  const response = await fetch('/api/generate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      topic, 
-      targetAudience, 
-      contentGoal, 
-      tone, 
-      affiliateLink,
-      threadCount
 
       generateBtn.disabled = true;
       generateBtn.innerText = 'Menyusun Utas...';
@@ -138,11 +125,17 @@ try {
       copyBtn.classList.add('hidden');
 
       try {
-        // Memanggil API internal Vercel yang menyembunyikan Key
         const response = await fetch('/api/generate', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ topic, targetAudience, contentGoal, tone, affiliateLink })
+          body: JSON.stringify({
+            topic,
+            targetAudience,
+            contentGoal,
+            tone,
+            threadCount,
+            affiliateLink
+          })
         });
 
         const data = await response.json();
@@ -158,7 +151,7 @@ try {
         outputArea.innerHTML = `<p class="text-red-400">Terjadi kesalahan: ${err.message}</p>`;
       } finally {
         generateBtn.disabled = false;
-        generateBtn.innerText = 'Generate Utas';
+        generateBtn.innerText = 'Generate';
       }
     });
 
