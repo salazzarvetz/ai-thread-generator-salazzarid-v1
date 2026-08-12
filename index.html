@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Thread Generator V1 by salazzar_id</title>
+  <title>Threads Generator V1 by salazzar_id</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-900 text-slate-100 min-h-screen p-4 sm:p-8">
   <div class="max-w-4xl mx-auto space-y-8">
     <header class="text-center space-y-2">
       <h1 class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
-        AI Thread Generator V1 by salazzar_id
+        Thread Generator V1 by salazzar_id
       </h1>
       <p class="text-slate-400 text-sm sm:text-base">
-        Buat post Thread yang menarik & bernarasi lengkap dengan link afiliasi secara otomatis.
+        Buat post Threads viral + Link Affiliate Otomatis
       </p>
     </header>
 
@@ -27,14 +27,14 @@
               TOPIK / GAGASAN UTAMA *
             </label>
             <textarea id="topic" rows="3" required
-              placeholder="Contoh: 3 Rekomendasi komponen PC yang harganya masih stabil"
+              placeholder="Contoh: 3 Rekomendasi parfum under 100 ribu"
               class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm focus:outline-none focus:border-indigo-500 transition"></textarea>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">TARGET PEMBACA</label>
-              <input type="text" id="targetAudience" placeholder="Gen Z, Pelajar, Pekerja, Ser..."
+              <input type="text" id="targetAudience" placeholder="Gen Z, Pelajar, Pekerja, Semua Umur"
                 class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition" />
             </div>
             <div>
@@ -74,7 +74,7 @@
 
           <div>
             <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">LINK AFILIASI (OPSIONAL)</label>
-            <input type="url" id="affiliateLink" placeholder="https://s.shopee.co.id/..."
+            <input type="url" id="affiliateLink" placeholder="https://s.shopee.co.id/40fcA37AcI, https://s.shopee.co.id/8fRRih1Osk, dst"
               class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-sm focus:outline-none focus:border-indigo-500 transition" />
           </div>
 
@@ -96,7 +96,7 @@
 
           <div id="outputArea" class="text-sm text-slate-300 space-y-4 whitespace-pre-line min-h-[300px]">
             <p class="text-slate-500 italic text-center py-12">
-              Isi parameter lalu klik "Generate Utas" untuk melihat hasil naskah di sini.
+              Isi parameter lalu klik "Generate" untuk melihat hasil naskah di sini.
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@
 
       generateBtn.disabled = true;
       generateBtn.innerText = 'Menyusun Utas...';
-      outputArea.innerHTML = '<p class="text-indigo-400 animate-pulse text-center py-12">AI sedang merangkai narasi utas terbaik...</p>';
+      outputArea.innerHTML = '<p class="text-indigo-400 animate-pulse text-center py-12">Threads Generator sedang merangkai narasi terbaik...</p>';
       copyBtn.classList.add('hidden');
 
       try {
